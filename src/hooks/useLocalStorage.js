@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // TODO: Implement the useLocalStorage custom hook
 // This hook should:
@@ -8,16 +8,27 @@ import { useState, useEffect } from 'react'
 // 4. Handle JSON parsing/stringifying
 
 export function useLocalStorage(key, initialValue) {
-  // TODO: Initialize state with value from localStorage or initialValue
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key)
+      return item ? JSON.parse(item) : initialValue
+    } catch (error) {
+      console.error(`Error loading ${key} from localStorage:`, error)
+      return initialValue
+    }
+  })
 
-  // TODO: Create a setter function that:
-  // - Updates state
-  // - Saves to localStorage
+  const setValue = (value) => {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value
+      setStoredValue(valueToStore)
+      window.localStorage.setItem(key, JSON.stringify(valueToStore))
+    } catch (error) {
+      console.error(`Error saving ${key} to localStorage:`, error)
+    }
+  }
 
-  // For now, just use regular useState so the app doesn't break
-  const [storedValue, setStoredValue] = useState(initialValue)
-
-  return [storedValue, setStoredValue]
+  return [storedValue, setValue]
 }
 
 // Example implementation structure:

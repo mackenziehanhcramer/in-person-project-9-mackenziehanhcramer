@@ -1,5 +1,5 @@
-import { useState } from 'react'
 // TODO: Import Routes, Route from react-router-dom
+import { useLocalStorage } from './hooks/useLocalStorage'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectsPage'
@@ -8,13 +8,12 @@ import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 
 // TODO: Import your page components
-
 import Navigation from './components/Navigation'
 import './styles/App.css'
 
 function App() {
   // Theme state - will be replaced with useLocalStorage hook later
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useLocalStorage('portfolio-theme', 'light')
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
