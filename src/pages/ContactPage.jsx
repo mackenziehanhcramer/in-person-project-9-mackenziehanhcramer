@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 // TODO: Import useNavigate for programmatic navigation after form submission
 
 function ContactPage() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,8 +30,7 @@ function ContactPage() {
       setIsSubmitting(false)
       setFormData({ name: '', email: '', message: '' })
 
-      // TODO: Navigate to home page after successful submission
-      // setTimeout(() => navigate('/'), 2000)
+      setTimeout(() => navigate('/'), 2000)
     }, 1000)
   }
 

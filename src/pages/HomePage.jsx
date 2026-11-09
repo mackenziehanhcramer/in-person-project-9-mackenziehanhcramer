@@ -1,4 +1,5 @@
 // TODO: Import Link from react-router-dom for navigation
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 function HomePage() {
@@ -25,12 +26,12 @@ function HomePage() {
 
         {/* TODO: Replace these buttons with Link components for navigation */}
         <div className="hero-buttons">
-          <button className="btn btn-primary">
+          <Link to="/projects" className="btn btn-primary">
             View My Projects
-          </button>
-          <button className="btn btn-secondary">
+          </Link>
+          <Link to="/contact" className="btn btn-secondary">
             Get In Touch
-          </button>
+          </Link>
         </div>
       </section>
 

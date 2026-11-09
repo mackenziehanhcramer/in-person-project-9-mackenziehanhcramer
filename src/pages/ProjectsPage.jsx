@@ -1,5 +1,6 @@
 import { useState } from 'react'
 // TODO: Import Link from react-router-dom
+import { Link } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
 import SearchBar from '../components/SearchBar'
 // TODO: Import the custom useFetch hook once created
@@ -35,8 +36,9 @@ function ProjectsPage() {
 
       <div className="projects-grid">
         {filteredProjects.map(project => (
-          // TODO: Wrap ProjectCard with Link to navigate to project detail
-          <ProjectCard key={project.id} project={project} />
+          <Link key={project.id} to={`/projects/${project.id}`} className="project-card-link">
+            <ProjectCard project={project} />
+          </Link>
         ))}
       </div>
 

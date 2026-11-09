@@ -1,6 +1,14 @@
 import { useState } from 'react'
 // TODO: Import Routes, Route from react-router-dom
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import ProjectsPage from './pages/ProjectsPage'
+import ProjectDetailPage from './pages/ProjectDetailPage'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
+
 // TODO: Import your page components
+
 import Navigation from './components/Navigation'
 import './styles/App.css'
 
@@ -22,22 +30,13 @@ function App() {
       </header>
 
       <main className="app-main">
-        {/* TODO: Replace this div with Routes and Route components */}
-        <div className="placeholder">
-          <h1>Welcome to Your Portfolio</h1>
-          <p>Set up React Router to navigate between pages!</p>
-          <div className="todo-box">
-            <h3>TODO:</h3>
-            <ol>
-              <li>Wrap App with BrowserRouter in main.jsx</li>
-              <li>Create page components in src/pages/</li>
-              <li>Set up Routes here</li>
-              <li>Update Navigation to use NavLink</li>
-              <li>Add dynamic project routes</li>
-              <li>Implement custom hooks</li>
-            </ol>
-          </div>
-        </div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:id" element={<ProjectDetailPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </main>
 
       <footer className="app-footer">
